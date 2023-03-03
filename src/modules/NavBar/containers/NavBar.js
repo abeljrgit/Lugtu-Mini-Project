@@ -23,7 +23,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar sx={{ backgroundColor: '#3C84AB', position: 'static' }}>
+    <AppBar sx={{ backgroundColor: 'transparent' }} elevation={0}>
       <Container>
         <Box
           sx={{

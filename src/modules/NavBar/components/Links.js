@@ -3,11 +3,7 @@ import { Button, Stack } from '@mui/material';
 
 export const Links = () => {
   return (
-    <Stack
-      direction="row"
-      sx={{ height: '100%', alignItems: 'stretch' }}
-      spacing={2}
-    >
+    <Stack direction="row" sx={{ alignItems: 'center' }} spacing={2}>
       <Button variant="text" sx={{ fontSize: '16px', color: 'white' }} href="/">
         Dashboard
       </Button>
