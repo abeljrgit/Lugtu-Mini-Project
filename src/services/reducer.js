@@ -5,6 +5,7 @@ const initState = {
   count: 88,
   modal: { visible: false, title: '', description: '' },
   playerData: [],
+  popularPlayers: [],
 };
 
 const reducer = (state = initState, action) => {
@@ -25,13 +26,14 @@ const reducer = (state = initState, action) => {
         ],
       };
     case actions.OPEN_MODAL:
-      console.log(action.payload);
       return { ...state, modal: { ...state.modal, ...action.payload } };
     case actions.CLOSE_MODAL:
       return {
         ...state,
         modal: { visible: false, title: '', description: '' },
       };
+    case actions.GET_POPULAR_PLAYERS:
+      return { ...state, popularPlayers: [...action.payload] };
     default:
       return state;
   }
