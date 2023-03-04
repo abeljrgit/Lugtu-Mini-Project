@@ -2,7 +2,58 @@ import { Box, Button, Card, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Images } from '../../../assets';
 export const PlayerForm = () => {
-  const [playerForm, setPlayerForm] = useState();
+  const [playerForm, setPlayerForm] = useState({
+    playerInputValue: '',
+    scoreInputValue: '',
+    error: {
+      playerInputError: '',
+      scoreInputError: '',
+    },
+    isPlayerInputValid: false,
+    isScoreInputValid: false,
+  });
+
+  const onChangHandler = (type, value) => {
+    let isPlayerInputValid = false;
+    let isScoreInputValid = false;
+    let playerInputError = '';
+    let scoreInputError = '';
+    if (type === 'playerInput') {
+      console.log(value);
+      if (value === '') {
+        playerInputError = 'Player name cannot be empty';
+        isPlayerInputValid = false;
+      } else {
+        playerInputError = '';
+        isPlayerInputValid = true;
+      }
+      setPlayerForm((prev) => {
+        return {
+          ...prev,
+          playerInputValue: value,
+          error: { ...prev.error, playerInputError },
+          isPlayerInputValid,
+        };
+      });
+    } else if (type === 'scoreInput') {
+      console.log(value);
+      if (value === '') {
+        scoreInputError = 'Player name cannot be empty';
+        isScoreInputValid = false;
+      } else {
+        scoreInputError = '';
+        isScoreInputValid = true;
+      }
+      setPlayerForm((prev) => {
+        return {
+          ...prev,
+          scoreInputValue: value,
+          error: { ...prev.error, scoreInputError },
+          isScoreInputValid,
+        };
+      });
+    }
+  };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
@@ -28,6 +79,8 @@ export const PlayerForm = () => {
       borderBottomColor: 'white',
     },
   };
+
+  const errorTextStyle = { mt: 1, color: 'yellow', fontSize: 12 };
 
   return (
     <Card
@@ -61,24 +114,56 @@ export const PlayerForm = () => {
               backgroundImage: `url(${Images.playerFormBg})`,
               backgroundPosition: 'center',
               opacity: 0.8,
+              zIndex: -1,
             }}
           />
           <TextField
             variant="standard"
             label="Player Name"
             inputProps={{ style: { borderColor: 'white' } }}
-            sx={{ ...textFieldStyle, marginBottom: 2 }}
+            sx={textFieldStyle}
+            value={playerForm.playerInputValue}
+            onChange={(e) => {
+              onChangHandler('playerInput', e.target.value);
+            }}
           />
-          <Typography></Typography>
+          <Typography sx={errorTextStyle}>
+            {playerForm.error.playerInputError === ''
+              ? '\u00A0'
+              : playerForm.error.playerInputError}
+          </Typography>
           <TextField
+            type="number"
             variant="standard"
             label="Score"
-            sx={{ ...textFieldStyle, marginBottom: 8 }}
+            sx={{
+              ...textFieldStyle,
+              '& input[type=number]': {
+                MozAppearance: 'textfield',
+              },
+              '& input[type=number]::-webkit-outer-spin-button': {
+                WebkitAppearance: 'none',
+                margin: 0,
+              },
+              '& input[type=number]::-webkit-inner-spin-button': {
+                WebkitAppearance: 'none',
+                margin: 0,
+              },
+            }}
+            value={playerForm.scoreInputValue}
+            onChange={(e) => {
+              onChangHandler('scoreInput', e.target.value);
+            }}
           />
+          <Typography sx={errorTextStyle}>
+            {playerForm.error.scoreInputError === ''
+              ? '\u00A0'
+              : playerForm.error.scoreInputError}
+          </Typography>
           <Button
             type="submit"
             variant="contained"
-            sx={{ backgroundColor: '#539165' }}
+            sx={{ backgroundColor: '#539165', mt: 8 }}
           >
             Submit
           </Button>
