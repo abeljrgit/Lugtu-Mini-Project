@@ -1,36 +1,48 @@
-import {
-  Box,
-  Card,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Icons } from '../../../assets';
+import { Box, Stack, TextField, Typography } from '@mui/material';
 import { onDeletePlayerAndScore } from '../../../services/action';
 import { ResultListItem } from './ResultListItem';
 
 export const ResultList = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResult, setSearchResult] = useState([]);
   const playerData = useSelector((state) => state.playerData);
   const dispatch = useDispatch();
   const deleteButtonHandler = (id) => {
     dispatch(onDeletePlayerAndScore(id));
   };
 
-  const queryResult = (queryString) => {
+  const finalResult = (queryString, playerDataValue) => {
     const pattern = new RegExp(queryString?.toLowerCase(), 'gi');
-    const filteredValuesArr = playerData.filter((data) =>
-      pattern.test(data?.playerName?.toLowerCase())
-    );
+    const filteredValuesArr =
+      playerDataValue.length !== 0
+        ? playerDataValue.filter((data) =>
+            pattern.test(data?.playerName?.toLowerCase())
+          )
+        : [];
 
-    if (queryString.length) {
-      setSearchResult([...filteredValuesArr]);
+    if (queryString === '') {
+      return playerDataValue.map((data) => (
+        <ResultListItem
+          id={data.id}
+          playerName={data.playerName}
+          score={data.score}
+          deleteButton={deleteButtonHandler}
+        />
+      ));
+    } else if (queryString !== '' && filteredValuesArr.length !== 0) {
+      return filteredValuesArr.map((data) => (
+        <ResultListItem
+          id={data.id}
+          playerName={data.playerName}
+          score={data.score}
+          deleteButton={deleteButtonHandler}
+        />
+      ));
+    } else if (queryString !== '' && filteredValuesArr.length === 0) {
+      return <Typography>No Data.</Typography>;
     } else {
-      setSearchResult([]);
+      return <Typography>No Data.</Typography>;
     }
   };
 
@@ -41,7 +53,6 @@ export const ResultList = () => {
         value={searchQuery}
         onChange={(e) => {
           setSearchQuery(e.target.value);
-          queryResult(e.target.value);
         }}
       />
       <Typography>{`You are searching for: ${searchQuery}`}</Typography>
@@ -49,26 +60,7 @@ export const ResultList = () => {
         Score Result:
       </Typography>
       <Stack direction="column" spacing={1}>
-        {searchQuery === '' &&
-          playerData.map((data) => (
-            <ResultListItem
-              id={data.id}
-              playerName={data.playerName}
-              score={data.score}
-            />
-          ))}
-        {searchQuery !== '' &&
-          searchResult.length !== 0 &&
-          searchResult.map((data) => (
-            <ResultListItem
-              id={data.id}
-              playerName={data.playerName}
-              score={data.score}
-            />
-          ))}
-        {searchQuery !== '' && searchResult.length === 0 && (
-          <Typography>No Data.</Typography>
-        )}
+        {finalResult(searchQuery, playerData)}
       </Stack>
     </Box>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import { Icons } from '../../../assets';
 import { Card, IconButton, Stack, Typography } from '@mui/material';
 
-export const ResultListItem = ({ id, playerName, score }) => {
+export const ResultListItem = ({ id, playerName, score, deleteButton }) => {
   return (
     <Stack key={id} direction="row" spacing={2}>
       <Card sx={{ flex: 4, p: 1 }}>
@@ -21,7 +21,7 @@ export const ResultListItem = ({ id, playerName, score }) => {
           p: 1,
           borderRadius: 2,
         }}
-        onClick={() => deleteButtonHandler(id)}
+        onClick={() => deleteButton(id)}
       />
     </Stack>
   );
