@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material';
 
 import Dashboard from './modules/Dashboard/containers/Dashboard';
+import ModalComponent from './modules/Modal/containers/ModalComponent';
 import NavBar from './modules/NavBar/containers/NavBar';
 import BackgroundVideo from './modules/BackgroundVideo/containers/BackgroundVideo';
 import PopularPlayer from './modules/PopularPlayer/containers/PopularPlayer';
@@ -25,6 +26,7 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <ThemeProvider theme={this.theme}>
+          <ModalComponent />
           <NavBar />
           <BackgroundVideo />
           <Routes>

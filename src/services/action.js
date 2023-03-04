@@ -27,3 +27,17 @@ export const onDeletePlayerAndScore = (val) => {
     payload: val,
   };
 };
+
+export const onModalOpen = (val) => {
+  return {
+    type: actions.OPEN_MODAL,
+    payload: val,
+  };
+};
+
+export const onModalClose = (val) => {
+  return {
+    type: actions.CLOSE_MODAL,
+    payload: val,
+  };
+};

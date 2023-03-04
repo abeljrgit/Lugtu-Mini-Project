@@ -2,7 +2,7 @@ import { Box, Button, Card, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Images } from '../../../assets';
 import { useDispatch } from 'react-redux';
-import { onAddPlayerAndScore } from '../../../services/action';
+import { onAddPlayerAndScore, onModalOpen } from '../../../services/action';
 import { v4 as uuidv4 } from 'uuid';
 
 export const PlayerForm = () => {
@@ -70,6 +70,14 @@ export const PlayerForm = () => {
           score: playerForm.scoreInputValue,
         })
       );
+      dispatch(
+        onModalOpen({
+          visible: true,
+          title: 'Success',
+          description:
+            'Player and score has been added\nPlease check score page.',
+        })
+      );
       setPlayerForm((prev) => {
         return {
           playerInputValue: '',
@@ -82,6 +90,14 @@ export const PlayerForm = () => {
           isScoreInputValid: false,
         };
       });
+    } else {
+      dispatch(
+        onModalOpen({
+          visible: true,
+          title: 'Failed',
+          description: 'Player and score were not added\nPlease try again.',
+        })
+      );
     }
   };
 
