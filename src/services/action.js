@@ -13,3 +13,10 @@ export const onDecrement = (val) => {
     payload: val,
   };
 };
+
+export const onAddPlayerAndScore = (val) => {
+  return {
+    type: actions.ADD_PLAYER,
+    payload: val,
+  };
+};

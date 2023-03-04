@@ -1,6 +1,10 @@
 import { Box, Button, Card, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Images } from '../../../assets';
+import { useDispatch } from 'react-redux';
+import { onAddPlayerAndScore } from '../../../services/action';
+import { v4 as uuidv4 } from 'uuid';
+
 export const PlayerForm = () => {
   const [playerForm, setPlayerForm] = useState({
     playerInputValue: '',
@@ -12,6 +16,7 @@ export const PlayerForm = () => {
     isPlayerInputValid: false,
     isScoreInputValid: false,
   });
+  const dispatch = useDispatch();
 
   const onChangHandler = (type, value) => {
     let isPlayerInputValid = false;
@@ -57,6 +62,15 @@ export const PlayerForm = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
+    if (playerForm.isPlayerInputValid && playerForm.isScoreInputValid) {
+      dispatch(
+        onAddPlayerAndScore({
+          id: uuidv4(),
+          playerName: playerForm.playerInputValue,
+          score: playerForm.scoreInputValue,
+        })
+      );
+    }
   };
 
   const textFieldStyle = {
