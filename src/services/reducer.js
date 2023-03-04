@@ -17,6 +17,14 @@ const reducer = (state = initState, action) => {
     case actions.ADD_PLAYER:
       console.log([...state.playerData, action.payload]);
       return { ...state, playerData: [...state.playerData, action.payload] };
+    case actions.DELETE_PLAYER:
+      console.log(action.payload);
+      return {
+        ...state,
+        playerData: [
+          ...state.playerData.filter((data) => data.id != action.payload),
+        ],
+      };
     default:
       return state;
   }

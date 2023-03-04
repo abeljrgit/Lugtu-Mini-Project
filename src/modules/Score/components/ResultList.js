@@ -1,9 +1,15 @@
-import { Box, Card, Stack, Typography } from '@mui/material';
+import { Box, Card, IconButton, Stack, Typography } from '@mui/material';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Icons } from '../../../assets';
+import { onDeletePlayerAndScore } from '../../../services/action';
 
 export const ResultList = () => {
   const playerData = useSelector((state) => state.playerData);
+  const dispatch = useDispatch();
+  const deleteButtonHandler = (id) => {
+    dispatch(onDeletePlayerAndScore(id));
+  };
 
   return (
     <Box sx={{ flex: 1, p: 2 }}>
@@ -15,16 +21,24 @@ export const ResultList = () => {
           playerData.map((data) => {
             return (
               <Stack key={data.id} direction="row" spacing={2}>
-                <Card sx={{ flex: 5, p: 1 }}>
+                <Card sx={{ flex: 4, p: 1 }}>
                   <Typography sx={{ lineHeight: 1.6 }}>
-                    {data.playerName}
+                    {data.playerName} - {data.score}
                   </Typography>
                 </Card>
-                <Card sx={{ flex: 1, p: 1 }}>
-                  <Typography sx={{ lineHeight: 1.6, textAlign: 'center' }}>
-                    {data.score}
-                  </Typography>
-                </Card>
+                <IconButton
+                  size="small"
+                  children={<img src={Icons.trashIcon} alt="Delete Icon" />}
+                  sx={{
+                    width: '48px',
+                    height: '100%',
+                    backgroundColor: 'red',
+                    flex: 1,
+                    p: 1,
+                    borderRadius: 2,
+                  }}
+                  onClick={() => deleteButtonHandler(data.id)}
+                />
               </Stack>
             );
           })

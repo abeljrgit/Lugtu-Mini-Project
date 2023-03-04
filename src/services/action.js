@@ -20,3 +20,10 @@ export const onAddPlayerAndScore = (val) => {
     payload: val,
   };
 };
+
+export const onDeletePlayerAndScore = (val) => {
+  return {
+    type: actions.DELETE_PLAYER,
+    payload: val,
+  };
+};
