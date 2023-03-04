@@ -26,7 +26,8 @@
     "react-spinners": "^0.13.8",
     "recharts": "^2.4.3",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
