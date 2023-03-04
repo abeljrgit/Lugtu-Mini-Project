@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { onDecrement, onIncrement } from '../../../services/action';
-import { Box, Container } from '@mui/material';
+import { Box, Card, Container } from '@mui/material';
 import { Videos } from '../../../assets';
+import { PlayerForm } from '../components/PlayerForm';
 
 export default class Dashboard extends Component {
   render() {
@@ -10,14 +11,15 @@ export default class Dashboard extends Component {
       <Box component="section">
         <Box
           sx={{
-            height: '900px',
+            height: '100vh',
             width: '100%',
             position: 'relative',
           }}
         >
           <video
             autoPlay={true}
-            loop={true}
+            loop
+            muted
             style={{
               objectFit: 'cover',
               objectPosition: 'center',
@@ -39,6 +41,7 @@ export default class Dashboard extends Component {
             }}
           />
         </Box>
+        <PlayerForm />
       </Box>
     );
   }
