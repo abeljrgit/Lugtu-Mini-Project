@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 
 import Dashboard from './modules/Dashboard/containers/Dashboard';
 import NavBar from './modules/NavBar/containers/NavBar';
+import BackgroundVideo from './modules/BackgroundVideo/containers/BackgroundVideo';
 import PopularPlayer from './modules/PopularPlayer/containers/PopularPlayer';
 import ContactUs from './modules/ContactUs/containers/ContactUs';
 import AboutUs from './modules/AboutUs/containers/AboutUs';
@@ -25,6 +26,7 @@ export default class App extends Component {
       <BrowserRouter>
         <ThemeProvider theme={this.theme}>
           <NavBar />
+          <BackgroundVideo />
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/player" element={<PopularPlayer />} />
