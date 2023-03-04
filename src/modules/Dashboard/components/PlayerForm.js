@@ -70,6 +70,18 @@ export const PlayerForm = () => {
           score: playerForm.scoreInputValue,
         })
       );
+      setPlayerForm((prev) => {
+        return {
+          playerInputValue: '',
+          scoreInputValue: '',
+          error: {
+            playerInputError: '',
+            scoreInputError: '',
+          },
+          isPlayerInputValid: false,
+          isScoreInputValid: false,
+        };
+      });
     }
   };
 
