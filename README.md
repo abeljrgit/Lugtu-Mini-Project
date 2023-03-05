@@ -49,8 +49,7 @@ Folder name is self explanatory
     src
     ├── assets
     ├── modules
-    ├── services
-    └── slices
+    └── services
 
 ## Documentation
 
