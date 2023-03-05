@@ -11,7 +11,7 @@ Mini Project
 - React-thunk package for redux's api consumption
 - Redux-persist for redux data persistency
 - React material ui carousel
-- Recharts
+- Recharts for chart UI
 - Material UI for fast and beautiful UIs
 - Axios package for api consumption
 - Lodash for javascript's methods extensions
@@ -44,12 +44,10 @@ Build your work(npm, target ES6)
 
 ## Folder Structure
 
-Folder name is self explanatory
-
     src
-    ├── assets
-    ├── modules
-    └── services
+    ├── assets - This will include all the static files like images,videos,icons, etc.
+    ├── modules - Components and containers are placed here.
+    └── services - Redux and api consumption is placed here.
 
 ## Documentation
 
@@ -59,7 +57,7 @@ Folder name is self explanatory
 [Redux/Toolkit](https://redux.js.org/introduction/getting-started)  
 [Redux-thunk](https://redux.js.org/usage/writing-logic-thunks)  
 [Redux-presist](https://github.com/rt2zz/redux-persist#readme)  
-[UUID](https://www.npmjs.com/package/uuid)  
+[UUID](https://github.com/uuidjs/uuid#readme)  
 [Recharts](https://recharts.org/en-US/)  
 [Axios](https://axios-http.com/docs/intro)  
 [Material UI](https://mui.com/material-ui/getting-started/overview/)  
