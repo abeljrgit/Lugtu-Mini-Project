@@ -9,7 +9,7 @@ class PopularPlayer extends Component {
   };
 
   componentDidMount = () => {
-    // this.props.getPlayers();
+    this.props.getPlayers();
   };
 
   render() {
