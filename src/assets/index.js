@@ -10,6 +10,10 @@ import carouselImage6 from './images/carousel-img-6.png';
 import basketballIcon from './icons/Basketball.svg';
 import burgerIcon from './icons/Burger.svg';
 import trashIcon from './icons/Trash.svg';
+import facebookLogo from './icons/FacebookLogo.png';
+import instagramLogo from './icons/InstagramLogo.png';
+import linkedinLogo from './icons/LinkedinLogo.png';
+import twitterLogo from './icons/TwitterLogo.png';
 
 import basketballVideo from './videos/Basketball.mp4';
 
@@ -28,6 +32,10 @@ export const Icons = {
   basketballIcon,
   burgerIcon,
   trashIcon,
+  facebookLogo,
+  instagramLogo,
+  linkedinLogo,
+  twitterLogo,
 };
 
 export const Videos = {
