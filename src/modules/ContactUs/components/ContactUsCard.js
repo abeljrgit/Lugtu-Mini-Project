@@ -6,7 +6,7 @@ export const ContactUsCard = () => {
   return (
     <Card
       sx={{
-        // flex: 1,
+        flex: 1,
         width: '200px',
         display: 'flex',
         flexDirection: 'column',
@@ -14,6 +14,8 @@ export const ContactUsCard = () => {
         backgroundColor: '#0F6292',
         color: '#FFFFFF',
         '@media (max-width: 768px)': {
+          flex: 'unset',
+          minHeight: '200px',
           width: '100%',
         },
       }}
