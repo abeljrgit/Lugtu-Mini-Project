@@ -13,10 +13,19 @@ export const ContactUsCard = () => {
         p: 2,
         backgroundColor: '#0F6292',
         color: '#FFFFFF',
+        '@media (max-width: 768px)': {
+          width: '100%',
+        },
       }}
     >
       <Typography variant="h5" sx={{ lineHeight: 1, mb: 2 }}>
         Contact Us
+      </Typography>
+      <Typography variant="h5" sx={{ lineHeight: 1 }}>
+        GECO Asia Pte. Ltd.
+      </Typography>
+      <Typography variant="body2" sx={{ fontSize: 12, mt: 1 }}>
+        2 Venture Drive, #10-18 Vision Exchange, Singapore 608526
       </Typography>
       <Button
         href="tel:6565603224"
